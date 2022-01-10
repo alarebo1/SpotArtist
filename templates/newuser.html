@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head> 
+    <body>
+        <h1>New User</h1>
+        
+        <form method="POST" action ="/Signup">
+            <div class="imgcontainer">
+                <img src="/static/img/music.jpg" alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul id="flashes" class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                <label for="uname"><b>Username</b></label>
+                <input type="text"  name="uid" placeholder="Username"><br>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pid" ><br>
+                <label for="artistid"><b>Artist</b></label>
+                <input type="text" name="artistid" placeholder="Enter Favorite Artist"><br>
+                <label for="aid"><b>Artist Id</b></label>
+                <input type="text" name="aid" placeholder="Enter Favorite Artist">
+                <button class="cleft" type="submit" name="submitbtn" value="create">Create Account</button>
+                <button class="cright" type="submit" name="submitbtn" value="back">Login</button>
+            </div> 
+        </form>
+    </body>
+</html>

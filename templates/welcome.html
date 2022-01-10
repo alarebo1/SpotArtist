@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Project 1</title>
+        <link rel="stylesheet" href="static/stylemusic.css">
+    </head>
+    <body>
+        <div claas = main_div>
+            <div class="albumInfo_div">
+                <h1 class='artist'> Artist: {{artist}}</h1>
+                <img src={{url}} align= center>
+                <h2 class="Song"> Song: {{song}} </h2>
+                <div class="Song"> 
+                    <audio controls>
+                        <source src ={{preview}} type = "audio/mpeg">
+                     </audio>
+                </div>
+            </div>
+        <div class="searchdiv">
+            <form method="POST" action ="/welcome">
+                <div class="container">
+                    <label for="artistid"><b>Artist</b></label>
+                    <input type="text" name="artistid" placeholder="Enter Favorite Artists Name">
+                    <button type="submit" name="submitbtn" value="addnew">Add Artist/Randomize</button><br>
+                    <label for="aid"><b>Artist Id:</b></label>
+                    <input type="text" name="aid" placeholder="Enter Favorite Artists ID">
+                    <button type="submit" name="submitbtn" value="addid">Add Artist/Randomize</button><br>
+                    <p>to select Random artist from your list leave the search box empty and click the button</p><br>
+                </div> 
+            </form>
+            <h2>Your Favorite Artists</h2>
+            <ol>
+                {% for fvartist in fvartists %}
+                 <li>{{fvartist}}</li>
+                 {% endfor %}
+            </ol>
+            <a href="{{url_for('logout')}}">log Out</a>
+        </div>
+        
+    </body>
+</html>

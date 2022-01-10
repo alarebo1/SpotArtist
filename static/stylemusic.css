@@ -1,0 +1,94 @@
+body
+{
+    background-color: rgb(41, 4, 39);
+    color:white ;
+}
+.main_div
+{
+    margin: auto;
+    width: 50%;
+    border: 13px solid green;
+    padding: 10px;
+}
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: red;
+  }
+.albumInfo_div{
+    background-color: black;
+    opacity: 0.8;
+    text-align: center;
+    border: 13px outset  #160464;
+    float: left;
+    padding: 2em;
+    margin: 2em;
+    animation: fade-in 1.5s ease, slide-in 1.2s ease;
+}
+
+.albumInfo_div img{
+    margin-left: 5px;
+    border-color: cadetblue;
+    border: 15px;
+    border-width: 5px;
+    border-image: 25px;
+    animation: scaleDown .5s ease 1s;
+}
+.artist
+{
+    font-family: Arial;
+    font-size: 14pt;
+    font-weight: bold;
+    color: moccasin;
+}
+.Song{
+    font-family: Arial;
+    font-size: 14pt;
+    font-weight: normal;
+    color: khaki;
+}
+.searchdiv
+{
+    animation: fade-in 1.5s ease, slide-in 1.2s ease;
+
+}
+/*Animations*/
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in {
+     0% {
+      top: -300px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  @keyframes scaleDown {
+      0% {
+      transform: scale(1);
+    }
+     10% {
+      transform: scale(0.7);
+    }
+     95% {
+      transform: scale(0.7);
+    }
+     100% {
+      transform: scale(1);
+    }
+  }
