@@ -5,7 +5,7 @@ from flask_login import login_user, logout_user,current_user, LoginManager,UserM
 import songinfo
 from flask_sqlalchemy import SQLAlchemy
 app = flask.Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://gtmmclyjbekmjv:3f51a387c47cebb23554c94fb0377e7a7e7be7fa4846e2c2005985b41ae33d57@ec2-3-222-24-200.compute-1.amazonaws.com:5432/db7ooqg1agha85"
+app.config["SQLALCHEMY_DATABASE_URI"] = DTBASEURL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = '5115secretekey'
 
