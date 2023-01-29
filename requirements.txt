@@ -4,4 +4,3 @@ requests
 Flask_SQLAlchemy
 Flask_login
 psycopg2
-gunicorn
