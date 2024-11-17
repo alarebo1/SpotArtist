@@ -1,94 +1,62 @@
-body
-{
-    background-color: rgb(41, 4, 39);
-    color:white ;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
-.main_div
-{
-    margin: auto;
-    width: 50%;
-    border: 13px solid green;
-    padding: 10px;
+
+.main_div {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
-a:link, a:visited {
-    background-color: #f44336;
+
+.albumInfo_div {
+    border: 2px solid #ccc;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s ease;
+}
+
+.albumInfo_div img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.searchdiv {
+    padding: 20px;
+    border: 2px solid #ccc;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #4CAF50;
     color: white;
-    padding: 15px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-  }
-  
-  a:hover, a:active {
-    background-color: red;
-  }
-.albumInfo_div{
-    background-color: black;
-    opacity: 0.8;
-    text-align: center;
-    border: 13px outset  #160464;
-    float: left;
-    padding: 2em;
-    margin: 2em;
-    animation: fade-in 1.5s ease, slide-in 1.2s ease;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
 }
 
-.albumInfo_div img{
-    margin-left: 5px;
-    border-color: cadetblue;
-    border: 15px;
-    border-width: 5px;
-    border-image: 25px;
-    animation: scaleDown .5s ease 1s;
+button:hover {
+    background-color: #45a049;
 }
-.artist
-{
-    font-family: Arial;
-    font-size: 14pt;
-    font-weight: bold;
-    color: moccasin;
-}
-.Song{
-    font-family: Arial;
-    font-size: 14pt;
-    font-weight: normal;
-    color: khaki;
-}
-.searchdiv
-{
-    animation: fade-in 1.5s ease, slide-in 1.2s ease;
 
+.playing {
+    animation: colorDrop 3s infinite;
 }
-/*Animations*/
-@keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slide-in {
-     0% {
-      top: -300px;
-    }
-    100% {
-      top: 0;
-    }
-  }
-  
-  @keyframes scaleDown {
-      0% {
-      transform: scale(1);
-    }
-     10% {
-      transform: scale(0.7);
-    }
-     95% {
-      transform: scale(0.7);
-    }
-     100% {
-      transform: scale(1);
-    }
-  }
+
+@keyframes colorDrop {
+    0% { background-color: #ff0000; }
+    25% { background-color: #00ff00; }
+    50% { background-color: #0000ff; }
+    75% { background-color: #ff00ff; }
+    100% { background-color: #ff0000; }
+}
