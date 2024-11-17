@@ -242,4 +242,3 @@ def updateapp():
             return flask.render_template("welcome.html",artist= "no artist saved in database",song="",preview="",url="",fvartists=mylist)
     else:
         return flask.redirect("/")
-app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=False)
