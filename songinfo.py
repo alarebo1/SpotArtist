@@ -27,6 +27,7 @@ headers = {
     'Authorization': 'Bearer {}'.format(access_token)
 }
 songname = []
+trackname = []
 musiclink = []
 tmpurl = []
 imgheight = []
@@ -43,11 +44,11 @@ def searcharitst(Artid):
             imgheight.clear()
             tmpurl.clear()
             aid.clear()
+            trackname.clear()
         #searching artist using there name and getting the are album
         SEARCH_API=SEARCH_URL+Artid+"&type=album&country=US&limit=10&offset=5"
         response = requests.get(SEARCH_API,headers=headers)
         searResult = response.json().get("albums").get('items')
-        
         for album in searResult:
             aid.append(album.get('id'))
             songname.append(album.get('name'))
@@ -62,12 +63,16 @@ def searcharitst(Artid):
                     print("error getting images")
             trackresponse = requests.get(ALBUM_URL+album.get('id')+"/tracks?"+"limit=1",headers=headers)
             trackdata = trackresponse.json().get('items')
+
             for artist in trackdata:
+                trackname.append(artist.get('name'))
                 musiclink.append(artist.get('preview_url'))
             for i, word in enumerate(musiclink):
                 if word == None:
                     musiclink[i] = ''
-        
+            for i, word in enumerate(trackname):
+                if word == None:
+                    musiclink[i] = ''
         for i, word in enumerate(tmpurl):
             if tmpurl[i]==300:
                 imgurl.append(imgheight[i])
