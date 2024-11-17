@@ -32,7 +32,7 @@ db = SQLAlchemy(app)
 # app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL").replace(
 #     "://", "ql://", 1
 # )
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 login_manager = LoginManager()
