@@ -34,6 +34,7 @@ db = SQLAlchemy(app)
 # )
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
+app.secret_key = os.getenv("secretkey")
 
 login_manager = LoginManager()
 login_manager.init_app(app)
