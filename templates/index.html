@@ -1,18 +1,17 @@
 <html>
     <head>
-        <title></title>
+        <title>Login</title>
         <link rel="shortcut icon" href="/static/img/favicon.ico">
         <link rel="stylesheet" href="/static/style.css">
-    </head> 
+    </head>
     <body>
-        
-        <form method="POST" action ="/login" >
+        <form method="POST" action="/login">
             <div class="imgcontainer">
                 <img src="/static/img/music.jpg" alt="Avatar" class="avatar">
             </div>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <ul id="flashes" class=flashes>
+                    <ul id="flashes" class="flashes">
                         {% for message in messages %}
                             <li>{{ message }}</li>
                         {% endfor %}
@@ -21,13 +20,12 @@
             {% endwith %}
             <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text"  name="uid" placeholder="Username"><br>
+                <input type="text" name="uid" placeholder="Username"><br>
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pid" >
+                <input type="password" placeholder="Enter Password" name="pid">
                 <button type="submit" name="submitbtn" value="Login" class="submitbtn">Log in</button>
                 <button type="submit" name="submitbtn" value="New User" class="leftbtn">Create Account</button>
             </div>
         </form>
-        
     </body>
 </html>
