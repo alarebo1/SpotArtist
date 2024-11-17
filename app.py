@@ -536,3 +536,4 @@ def deleteW(id):
     except:
         flask.flash("Unable to delete warehouse")
         return flask.redirect(flask.url_for("home"))
+app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=False)
