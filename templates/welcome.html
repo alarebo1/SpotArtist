@@ -1,41 +1,114 @@
-<html>
-    <head>
-        <title>Project 1</title>
-        <link rel="shortcut icon" href="/static/img/favicon.ico">
-        <link rel="stylesheet" href="static/stylemusic.css">
-    </head>
-    <body>
-        <div claas = main_div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <link rel="stylesheet" href="static/stylemusic.css">
+</head>
+<body>
+    <!-- Night Sky and Shooting Stars -->
+    <div class="night">
+            <div class="main_div">
+            <!-- Album Information -->
             <div class="albumInfo_div">
-                <h1 class='artist'> Artist: {{artist}}</h1>
-                <img src={{url}} align= center>
-                <h2 class="Song"> Song: {{song}} </h2>
-                <div class="Song"> 
+                <h1 class="artist">Artist: {{ artist }}</h1>
+                <img src="{{ url }}" alt="Album Image">
+                <h2 class="Song">Album: {{ album }}</h2>
+                <h2 class="Song">Song: {{ song }}</h2>
+
+                <div class="Song">
                     <audio controls>
-                        <source src ={{preview}} type = "audio/mpeg">
-                     </audio>
+                        <source src="{{ preview }}" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <!-- Audio Visualization Boxes -->
+                <div class="boxContainer">
+                    <div class="box box1"></div>
+                    <div class="box box2"></div>
+                    <div class="box box3"></div>
+                    <div class="box box4"></div>
+                    <div class="box box5"></div>
+                    <div class="box box6"></div>
+                    <div class="box box7"></div>
+                    <div class="box box8"></div>
+                    <div class="box box9"></div>
+                    <div class="box box10"></div>
                 </div>
             </div>
-        <div class="searchdiv">
-            <form method="POST" action ="/welcome">
-                <div class="container">
-                    <label for="artistid"><b>Artist</b></label>
-                    <input type="text" name="artistid" placeholder="Enter Favorite Artists Name">
-                    <button type="submit" name="submitbtn" value="addnew">Add Artist/Randomize</button><br>
-                    <label for="aid"><b>Artist Id:</b></label>
-                    <input type="text" name="aid" placeholder="Enter Favorite Artists ID">
-                    <button type="submit" name="submitbtn" value="addid">Add Artist/Randomize</button><br>
-                    <p>to select Random artist from your list leave the search box empty and click the button</p><br>
-                </div> 
-            </form>
-            <h2>Your Favorite Artists</h2>
-            <ol>
-                {% for fvartist in fvartists %}
-                 <li>{{fvartist}}</li>
-                 {% endfor %}
-            </ol>
-            <a href="{{url_for('logout')}}">log Out</a>
+
+            <!-- Search and Artist List -->
+            <div class="searchdiv">
+                <form method="POST" action="/welcome">
+                    <div class="container">
+                        <label for="artistid"><b>Artist</b></label>
+                        <input type="text" name="artistid" placeholder="Enter Favorite Artist's Name">
+                        <button type="submit" name="submitbtn" value="addnew">Add Artist/Randomize</button><br>
+
+                        <label for="aid"><b>Artist Id:</b></label>
+                        <input type="text" name="aid" placeholder="Enter Favorite Artist's ID">
+                        <button type="submit" name="submitbtn" value="addid">Add Artist/Randomize</button><br>
+
+                        <p>To select a random artist from your list, leave the search box empty and click the button.</p><br>
+                    </div>
+                </form>
+
+                <h2>Your Favorite Artists</h2>
+                <ol>
+                    {% for fvartist in fvartists %}
+                        <li>{{ fvartist }}</li>
+                    {% endfor %}
+                </ol>
+                <a href="{{ url_for('logout') }}">Log Out</a>
+            </div>
         </div>
-        
-    </body>
+    </div> <!-- Night container will hold the stars -->
+    <script src="script.js"></script>
+
+    <!-- Main Content -->
+    
+
+    <!-- JavaScript for Audio Controls and Animation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audioElement = document.querySelector("audio");
+            const mainDiv = document.querySelector(".albumInfo_div");
+            const boxContainer = document.querySelector(".boxContainer");
+
+            audioElement.addEventListener("play", () => {
+                mainDiv.classList.add("playing");
+                boxContainer.classList.add("active");
+                boxContainer.style.display = "flex";  // Show the box container when music plays
+            });
+
+            audioElement.addEventListener("pause", () => {
+                mainDiv.classList.remove("playing");
+                boxContainer.classList.remove("active");
+                boxContainer.style.display = "none";  // Hide the box container when music pauses
+            });
+
+            audioElement.addEventListener("ended", () => {
+                mainDiv.classList.remove("playing");
+                boxContainer.classList.remove("active");
+                boxContainer.style.display = "none";  // Hide the box container when music ends
+            });
+
+            // Dynamically adjust box animation based on music volume (simplified approach)
+            audioElement.addEventListener("volumechange", () => {
+                if (audioElement.volume < 0.3) {
+                    boxContainer.classList.add("quiet");
+                    boxContainer.classList.remove("normal", "loud");
+                } else if (audioElement.volume >= 0.3 && audioElement.volume < 0.7) {
+                    boxContainer.classList.add("normal");
+                    boxContainer.classList.remove("quiet", "loud");
+                } else {
+                    boxContainer.classList.add("loud");
+                    boxContainer.classList.remove("quiet", "normal");
+                }
+            });
+        });
+    </script>    
+</body>
 </html>
