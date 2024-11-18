@@ -67,10 +67,15 @@ deletion. the method then will search the users input and check if it exist in d
 first new add row with the users info leaving the artist name and aid empty and delete the searched 
 artist form the database.
 
- 
- ![image](https://user-images.githubusercontent.com/77553304/137207415-5de09b59-eb8f-46e5-b89a-23c4435fb8c5.png)
- ![image](https://user-images.githubusercontent.com/77553304/137207502-c97aedbf-a294-4174-9197-46588d1b4c84.png)
- ![image](https://user-images.githubusercontent.com/77553304/137207621-f887dba9-7bd4-49ad-addd-cbd10b783d98.png)
+![image](https://github.com/user-attachments/assets/a5e6a55b-3153-4b5f-86f2-de6eb7fb15d0)
+![image](https://github.com/user-attachments/assets/22ca0fd0-96d6-4cbd-8570-f7b20c5a1484)
+![image](https://github.com/user-attachments/assets/8b5c2151-bbdb-4c42-9e07-88e026481b54)
+
+If the album has a preview available in the Spotify API and you hit play, the album info div will shift to vibrant colors while its playing the preview.
+![image](https://github.com/user-attachments/assets/75ffdef2-9f3a-44ed-aa9e-40d67f22a789)
+![image](https://github.com/user-attachments/assets/c5b33da5-6811-447b-bb95-c49ba18fe4b7)
+
+
 
 
 
