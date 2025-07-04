@@ -155,7 +155,31 @@ def the_welcome():
                 song.searcharitst(savedartist[num])
                 currentartist.clear()
                 currentartist.append(savedartist[num])
-                
+        if flask.request.form["submitbtn"] == "removeartist":
+            artist_to_remove = flask.request.form["artisttoremove"]
+            
+            # Remove artist from DB
+            user = User.query.filter_by(username=current_user.username, artist=artist_to_remove).first()
+            if user:
+                db.session.delete(user)
+                db.session.commit()
+
+            # Remove from in-memory saved list
+            if artist_to_remove in savedartist:
+                savedartist.remove(artist_to_remove)
+
+            # Pick a new current artist and refresh data
+            if len(savedartist) > 0:
+                num = random.randint(0, len(savedartist)-1)
+                new_artist = savedartist[num]
+                currentartist.clear()
+                currentartist.append(new_artist)
+                song.searcharitst(new_artist)
+            else:
+                currentartist.clear()
+                currentartist.append("")
+
+            return flask.redirect("update")        
         if flask.request.form["submitbtn"] == "addid":
             artid = flask.request.form["aid"]
             #checks if the artist id is valid    
