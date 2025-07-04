@@ -66,10 +66,14 @@ def searcharitst(Artid):
 
             for artist in trackdata:
                 track_title = artist.get('name')
+                embed_url = search_youtube(Artid+track_title)
+                videolink.append(embed_url)
+
                 trackname.append(track_title)
                 # Replace Spotify preview with Apple iTunes preview
                 preview_url = get_preview_from_itunes(Artid, track_title)
                 musiclink.append(preview_url if preview_url else '')
+
             for i, word in enumerate(musiclink):
                 if word == None:
                     musiclink[i] = ''
@@ -132,3 +136,15 @@ def get_preview_from_itunes(artist, track):
         if results:
             return results[0].get('previewUrl')
     return ''
+def search_youtube(query):
+    import re
+    search_url = f"https://www.youtube.com/results?search_query={query.replace(' ', '+')}"
+    response = requests.get(search_url)
+
+    video_ids = re.findall(r"watch\?v=(\S{11})", response.text)
+    unique_ids = list(dict.fromkeys(video_ids))  # remove duplicates
+
+    embed_links = [f"https://www.youtube.com/embed/{vid}" for vid in unique_ids[:2]]
+    if len (embed_links)> 0:
+        return embed_links[0]
+    return ""
