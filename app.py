@@ -28,8 +28,6 @@ class User(db.Model,UserMixin):
     def __repr__(self):
         return f"<User {self.username}"
 
-#with app.app_context():
-    #db.create_all()
 #setting up songifo.py to song 
 song = songinfo
 
