@@ -254,19 +254,17 @@ def updateapp():
         album = []
         if loggedout:
             return flask.redirect("/")
-        print("saved artist ",savedartist)
         
         if len(savedartist)>0:
             trackName = song.trackname.copy()
             imgurl= song.imgurl.copy()
             album = song.songname.copy()
+            videolink = song.videolink.copy()
             preview = song.musiclink.copy()
-            print(preview)
-        print(currentartist)
-        print()
+       
         if len(album)>1:
             num = random.randint(0,(len(album)-1))
-            return flask.render_template("welcome.html",album= album[num],artist= currentartist[0],song=trackName[num],preview=preview[num],url=imgurl[num],fvartists=savedartist)
+            return flask.render_template("welcome.html",embed_url = videolink[num],album= album[num],artist= currentartist[0],song=trackName[num],preview=preview[num],url=imgurl[num],fvartists=savedartist)
         else:
             mylist={"You have not saved a favorite artist","to save artist use the search bar and click add artist"}
             return flask.render_template("welcome.html",artist= "no artist saved in database",song="",preview="",url="",fvartists=mylist)
