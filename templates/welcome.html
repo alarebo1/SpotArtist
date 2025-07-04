@@ -56,6 +56,14 @@
                 </form>
 
                 <h2>Your Favorite Artists</h2>
+                <iframe width="560" height="315"
+                    src="{{ embed_url }}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
                 <ol>
                     {% for fvartist in fvartists %}
                         <li>{{ fvartist }}</li>
