@@ -65,8 +65,11 @@ def searcharitst(Artid):
             trackdata = trackresponse.json().get('items')
 
             for artist in trackdata:
-                trackname.append(artist.get('name'))
-                musiclink.append(artist.get('preview_url'))
+                track_title = artist.get('name')
+                trackname.append(track_title)
+                # Replace Spotify preview with Apple iTunes preview
+                preview_url = get_preview_from_itunes(Artid, track_title)
+                musiclink.append(preview_url if preview_url else '')
             for i, word in enumerate(musiclink):
                 if word == None:
                     musiclink[i] = ''
@@ -120,3 +123,12 @@ def idsearch(Artid):
     except TypeError:
         found.clear()
         found.append(0)
+def get_preview_from_itunes(artist, track):
+    query = f"{artist} {track}"
+    url = f"https://itunes.apple.com/search?term={requests.utils.quote(query)}&entity=song&limit=1"
+    res = requests.get(url)
+    if res.status_code == 200:
+        results = res.json().get('results')
+        if results:
+            return results[0].get('previewUrl')
+    return ''
