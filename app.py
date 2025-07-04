@@ -4,6 +4,9 @@ import flask
 from flask_login import login_user, logout_user,current_user, LoginManager,UserMixin
 import songinfo
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+load_dotenv()
+
 app = flask.Flask(__name__)
 db_url = os.getenv("DATABASE_URL")
 if db_url and db_url.startswith("postgres://"):
