@@ -66,7 +66,16 @@
                 </iframe>
                 <ol>
                     {% for fvartist in fvartists %}
-                        <li>{{ fvartist }}</li>
+                        <li>
+                            <!-- The artist's name -->
+                            {{ fvartist }}
+
+                            <!-- Inline form to remove this artist -->
+                            <form method="POST" action="/welcome" style="display:inline;">
+                                <input type="hidden" name="artisttoremove" value="{{ fvartist }}">
+                                <button type="submit" name="submitbtn" value="removeartist">Remove</button>
+                            </form>
+                        </li>
                     {% endfor %}
                 </ol>
                 <a href="{{ url_for('logout') }}">Log Out</a>
