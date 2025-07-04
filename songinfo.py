@@ -40,6 +40,7 @@ def searcharitst(Artid):
     try:
         if len(songname)>1:
             songname.clear()
+            videolink.clear()
             imgurl.clear()
             musiclink.clear()
             imgheight.clear()
